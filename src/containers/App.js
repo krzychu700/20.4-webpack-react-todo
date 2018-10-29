@@ -2,14 +2,25 @@ import React from 'react';
 import uuid from 'uuid';
 import style from './App.css';
 import Title from '../components/Title';
+import TodoList from '../components/TodoList';
+import styles from '../components/TodoList.css'; //nie mozna 2krotnie importowac stylii?
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: []
+      data: [{
+        id: 1,
+            text: 'clean room'
+        }, {
+        id: 2,
+            text: 'wash the dishes'
+        }, {
+        id: 3,
+            text: 'feed my cat'
+        }]
     };
-  }
+  } 
   addTodo(val) {
     const todo = {
       text: val,
@@ -26,7 +37,9 @@ class App extends React.Component {
     return (
       <div className={style.TodoApp}>
       <Title count={this.state.data.length} title={this.props.title}/>
-        Tutaj pojawią się komponenty naszej aplikacji
+        <div className={styles.TodoList}>
+          <TodoList data={this.state.data} remove={this.removeTodo.bind(this)}/>
+        </div>
       </div>
     );
   }
