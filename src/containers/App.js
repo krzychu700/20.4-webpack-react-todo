@@ -3,7 +3,8 @@ import uuid from 'uuid';
 import style from './App.css';
 import Title from '../components/Title';
 import TodoList from '../components/TodoList';
-import styles from '../components/TodoList.css'; //nie mozna 2krotnie importowac stylii?
+import styles from '../components/TodoList.css'; 
+import { hot } from 'react-hot-loader';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +19,12 @@ class App extends React.Component {
         }, {
         id: 3,
             text: 'feed my cat'
+        }, {
+          id: 4,
+            text: 'feed my dog'
+        }, {
+          id: 5,
+            text: 'test' //uzyty do testu, strona nie odwieza sie automatycznie po wprowadzeniu zmiany i zapisie. Po jej odswiezeniu wszystko jest ok. Nie wiem, czy to tak mialo dzialac.
         }]
     };
   } 
@@ -45,4 +52,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default hot(module)(App);
